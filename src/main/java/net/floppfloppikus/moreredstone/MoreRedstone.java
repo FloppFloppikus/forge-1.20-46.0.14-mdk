@@ -1,6 +1,7 @@
 package net.floppfloppikus.moreredstone;
 
 import com.mojang.logging.LogUtils;
+import net.floppfloppikus.moreredstone.item.ModCreativeModTabs;
 import net.floppfloppikus.moreredstone.item.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -29,6 +30,7 @@ public class MoreRedstone {
         // Registering Objects
 
         ModItems.register(modEventBus);
+        ModCreativeModTabs.register(modEventBus);
 
         // -------------------
 
@@ -38,8 +40,7 @@ public class MoreRedstone {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        LOGGER.info("HELLO FROM COMMON SETUP");
-        LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
+
     }
 
     // Adding items to creative tab
