@@ -1,7 +1,9 @@
 package net.floppfloppikus.moreredstone;
 
 import com.mojang.logging.LogUtils;
+import net.floppfloppikus.moreredstone.item.ModItems;
 import net.minecraft.client.Minecraft;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -24,7 +26,13 @@ public class MoreRedstone {
     public MoreRedstone() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::commonSetup);
-        // register comes hereee hii floppaa
+
+        // Registering Objects
+
+        ModItems.register(modEventBus);
+
+        // -------------------
+
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
     }
@@ -34,8 +42,11 @@ public class MoreRedstone {
         LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
     }
 
+    // Adding items to creative tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-
+        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(ModItems.HEATER_ROD);
+        }
     }
 
     @SubscribeEvent
