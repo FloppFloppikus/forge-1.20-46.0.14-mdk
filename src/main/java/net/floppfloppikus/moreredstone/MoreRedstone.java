@@ -16,12 +16,12 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 
-@Mod(ExampleMod.MOD_ID)
-public class ExampleMod {
+@Mod(MoreRedstone.MOD_ID)
+public class MoreRedstone {
     public static final String MOD_ID = "moreredstone";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public ExampleMod() {
+    public MoreRedstone() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::commonSetup);
         // register comes hereee hii floppaa
